@@ -1,7 +1,11 @@
 package org.polytech.projet.jeu;
 
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author jean-baptisteborel
+ *
+ */
 public abstract class Unite {
 
 	private String name;
