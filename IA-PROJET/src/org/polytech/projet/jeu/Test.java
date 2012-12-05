@@ -1,3 +1,5 @@
+package org.polytech.projet.jeu;
+
 import org.newdawn.slick.AppGameContainer; //Conteneur de base du jeu
 import org.newdawn.slick.GameContainer; //Conteneur annexe
 import org.newdawn.slick.BasicGame; //La classe principale dont dépend votre jeu
