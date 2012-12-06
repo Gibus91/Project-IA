@@ -1,6 +1,6 @@
 package org.polytech.projet.jeu;
 
-public class Cavalier extends Unite {
+public class Cavalier extends UniteCombat {
 
 	Cavalier() {
 		super("Cavalier", 3, 4.0, 10.0, 100.0);
