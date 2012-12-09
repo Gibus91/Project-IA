@@ -1,25 +1,34 @@
-package org.polytech.projet.jeu;
+package org.polytech.projet.jeu.ressource;
 
+/**
+ * 
+ * @author jean-baptisteborel
+ * 
+ */
 public abstract class Ressources {
 
 	private String types;
-	private int capaciter;
-	public Ressources (String types, int capaciter){
+	private int quantite;
+
+	public Ressources(String types, int quantite) {
 		this.types = types;
-		this.capaciter = capaciter;
+		this.quantite = quantite;
 	}
+
 	public String getTypes() {
 		return types;
 	}
+
 	public void setTypes(String types) {
 		this.types = types;
 	}
+
 	public int getCapaciter() {
-		return capaciter;
+		return quantite;
 	}
+
 	public void setCapaciter(int capaciter) {
-		this.capaciter = capaciter;
+		this.quantite = capaciter;
 	}
-	
-	
+
 }

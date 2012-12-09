@@ -11,22 +11,22 @@ public class SimpleGame extends BasicGame {
 	public SimpleGame() {
 		super("SimpleTest");
 	}
- 
+
 	@Override
 	public void init(GameContainer container) throws SlickException {
 	}
- 
+
 	@Override
 	public void update(GameContainer container, int delta)
 			throws SlickException {
 	}
- 
+
 	@Override
 	public void render(GameContainer container, Graphics g)
 			throws SlickException {
 		g.drawString("Hello, Slick world!", 0, 100);
 	}
- 
+
 	public static void main(String[] args) {
 		try {
 			AppGameContainer app = new AppGameContainer(new SimpleGame());

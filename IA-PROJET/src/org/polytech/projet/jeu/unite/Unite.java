@@ -1,15 +1,13 @@
-package org.polytech.projet.jeu;
+package org.polytech.projet.jeu.unite;
 
-import java.util.ArrayList;
 /**
  * 
  * @author jean-baptisteborel
- *
+ * 
  */
 public abstract class Unite {
 
 	private String name;
-
 
 	/**
 	 * Création d'une unité du jeu
@@ -19,11 +17,11 @@ public abstract class Unite {
 	 * @param force
 	 * @param armure
 	 */
-	Unite(String name) {
+	public Unite(String name) {
 		this.setName(name);
 
 	}
-	
+
 	public String getName() {
 		return name;
 	}
