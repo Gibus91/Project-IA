@@ -15,7 +15,7 @@ public class Cavalier extends UniteCombat {
 	 * @param y
 	 */
 	public Cavalier(Coordonnee c) {
-		super("Cavalier", 3, 1, c, 4.0, 10.0, 100.0);
+		super("C", 2, 1, c, 4.0, 10.0, 100.0);
 		// TODO Auto-generated constructor stub
 	}
 }

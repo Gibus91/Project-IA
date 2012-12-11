@@ -15,9 +15,13 @@ public class Carte {
 
 	private String[][] carte;
 	private ArrayList<UniteCombat> listUnit;
+	private int width;
+	private int height;
 
 	public Carte() {
-		carte = new String[20][20];
+		width = 20;
+		height = 20;
+		carte = new String[height][width];
 		initCarte();
 		listUnit = new ArrayList<UniteCombat>();
 	}
@@ -40,6 +44,15 @@ public class Carte {
 		}
 	}
 
+	public Boolean caseVide(int x, int y) {
+		Boolean retour = false;
+		if(carte[x][y] == ""){
+			System.out.println("vide");
+			retour = true;
+		}
+		return retour;
+	}
+
 	public void jouerTour() {
 		initCarte();
 		setUniteCarte();
@@ -56,17 +69,35 @@ public class Carte {
 		Coordonnee coord1 = new Coordonnee(3, 0);
 		UniteCombat u = new Cavalier(coord);
 		UniteCombat u1 = new Cavalier(coord1);
-
+	
 		Carte c = new Carte();
+		u1.listPosDisponible(c);
+		System.out.println(u1.getListCoordAcceccible());
 		c.listUnit.add(u);
 		c.listUnit.add(u1);
 		c.setUniteCarte();
 		System.out.println("carte avant");
 		c.afficheCarte();
-		u.mouvement(3, 1);
+		/*u.mouvement(3, 1);
 		c.jouerTour();
 		System.out.println("carte après");
-		c.afficheCarte();
+		c.afficheCarte();*/
 
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 }

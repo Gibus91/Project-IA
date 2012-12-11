@@ -2,6 +2,7 @@ package org.polytech.projet.jeu.unite;
 
 import java.util.ArrayList;
 
+import org.polytech.projet.jeu.Carte;
 import org.polytech.projet.jeu.util.Coordonnee;
 
 /**
@@ -18,9 +19,9 @@ public class UniteCombat extends Unite {
 	private double force;
 	private double armure;
 	private double vie;
+	private ArrayList<Coordonnee> listCoordAcceccible;
 
 	/**
-	 * 
 	 * 
 	 * @param name
 	 * @param dist
@@ -40,6 +41,15 @@ public class UniteCombat extends Unite {
 		this.force = force;
 		this.armure = armure;
 		this.vie = vie;
+		this.listCoordAcceccible = new ArrayList<Coordonnee>();
+	}
+
+	public ArrayList<Coordonnee> getListCoordAcceccible() {
+		return listCoordAcceccible;
+	}
+
+	public void setListCoordAcceccible(ArrayList<Coordonnee> listCoordAcceccible) {
+		this.listCoordAcceccible = listCoordAcceccible;
 	}
 
 	/**
@@ -97,9 +107,52 @@ public class UniteCombat extends Unite {
 		System.out.println("Dist " + dist);
 	}
 
-	public ArrayList<Coordonnee> listPosDisponible() {
+	/**
+	 * revoir la fonction, peut-être en faire deux, dont une recurcive qui va
+	 * juste chercher aux 4 côtés
+	 * 
+	 * @param c
+	 * @return
+	 */
+	public void listPosDisponible(Carte c) {
 		ArrayList<Coordonnee> listPos = new ArrayList<Coordonnee>();
-		return null;
+		int posX = this.coordonnee.getX();
+		int posY = this.coordonnee.getY();
+		int distance = this.distance;
+
+		for (int i = 1; i <= distance; i++) {
+			listCoordAcceccible.addAll(getCoord(c, posX + i, posY));
+			listCoordAcceccible.addAll(getCoord(c, posX - i, posY));
+			listCoordAcceccible.addAll(getCoord(c, posX, posY + i));
+			listCoordAcceccible.addAll(getCoord(c, posX, posY - i));
+		}
+	}
+
+	public ArrayList<Coordonnee> getCoord(Carte c, int posX, int posY) {
+		ArrayList<Coordonnee> listTemp = new ArrayList<Coordonnee>();
+		try {
+			System.out.println();
+			if (posX <= c.getWidth() && c.caseVide(posX, posY)) {
+				Coordonnee coordTemp = new Coordonnee(posX, posY);
+				listTemp.add(coordTemp);
+			}
+			if (posX >= 0 && c.caseVide(posX, posY)) {
+				Coordonnee coordTemp = new Coordonnee(posX, posY);
+				listTemp.add(coordTemp);
+			}
+			if (posY <= c.getHeight() && c.caseVide(posX, posY)) {
+				Coordonnee coordTemp = new Coordonnee(posX, posY);
+				listTemp.add(coordTemp);
+			}
+			if (posY >= 0 && c.caseVide(posX, posY)) {
+				Coordonnee coordTemp = new Coordonnee(posX, posY);
+				listTemp.add(coordTemp);
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+
+		return listTemp;
 	}
 
 	public int getDistance() {

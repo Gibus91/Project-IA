@@ -15,6 +15,13 @@ public class Coordonnee {
 		this.y = y;
 	}
 
+	
+	@Override
+	public String toString() {
+		return "Coordonnee [x=" + x + ", y=" + y + "]";
+	}
+
+
 	public int getX() {
 		return this.x;
 	}
