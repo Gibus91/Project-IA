@@ -1,6 +1,8 @@
 package org.polytech.projet.jeu.unite;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.polytech.projet.jeu.Carte;
 import org.polytech.projet.jeu.util.Coordonnee;
@@ -12,14 +14,14 @@ import org.polytech.projet.jeu.util.Coordonnee;
  */
 public class UniteCombat extends Unite {
 
-	private int distance;
+	private int distanceUnite;
 	private int porteeArme;
 	// Position x et y de l'unité sur la carte
 	private Coordonnee coordonnee;
 	private double force;
 	private double armure;
 	private double vie;
-	private ArrayList<Coordonnee> listCoordAcceccible;
+	private Set<Coordonnee> listCoordAccessible;
 
 	/**
 	 * 
@@ -32,24 +34,25 @@ public class UniteCombat extends Unite {
 	 * @param armure
 	 * @param vie
 	 */
+
 	public UniteCombat(String name, int dist, int portee, Coordonnee coord,
 			double force, double armure, double vie) {
 		super(name);
-		this.distance = dist;
+		this.distanceUnite = dist;
 		this.setPorteeArme(portee);
 		this.setCoordonnee(coord);
 		this.force = force;
 		this.armure = armure;
 		this.vie = vie;
-		this.listCoordAcceccible = new ArrayList<Coordonnee>();
+		this.listCoordAccessible = new HashSet<Coordonnee>();
 	}
 
-	public ArrayList<Coordonnee> getListCoordAcceccible() {
-		return listCoordAcceccible;
+	public Set<Coordonnee> getListCoordAcceccible() {
+		return listCoordAccessible;
 	}
 
-	public void setListCoordAcceccible(ArrayList<Coordonnee> listCoordAcceccible) {
-		this.listCoordAcceccible = listCoordAcceccible;
+	public void setListCoordAcceccible(HashSet<Coordonnee> listCoordAcceccible) {
+		this.listCoordAccessible = listCoordAcceccible;
 	}
 
 	/**
@@ -82,7 +85,7 @@ public class UniteCombat extends Unite {
 	 * @param mouvementY
 	 */
 	public void mouvement(int mouvementX, int mouvementY) {
-		int dist = this.distance;
+		int dist = this.distanceUnite;
 		/**
 		 * TODO: Enlever commentaires debug. Rajouter une exception si le
 		 * déplacement est illicite.
@@ -90,7 +93,7 @@ public class UniteCombat extends Unite {
 		System.out.println("Dist " + dist);
 		System.out.println("deplacement axe x : "
 				+ (mouvementX + this.getCoordonnee().getX()));
-		if (this.distance >= (mouvementX + this.getCoordonnee().getX())
+		if (this.distanceUnite >= (mouvementX + this.getCoordonnee().getX())
 				&& (dist -= (mouvementX + this.getCoordonnee().getX())) >= 0) {
 			this.getCoordonnee().setX(mouvementX + this.getCoordonnee().getX());
 		} else
@@ -99,7 +102,7 @@ public class UniteCombat extends Unite {
 		System.out.println("Dist " + dist);
 		System.out.println("deplacement axe y : "
 				+ (mouvementY + this.getCoordonnee().getY()));
-		if (this.distance >= mouvementY + this.getCoordonnee().getY()
+		if (this.distanceUnite >= mouvementY + this.getCoordonnee().getY()
 				&& (dist -= (mouvementY + this.getCoordonnee().getY())) >= 0) {
 			this.getCoordonnee().setX(mouvementY + this.getCoordonnee().getY());
 		} else
@@ -115,52 +118,76 @@ public class UniteCombat extends Unite {
 	 * @return
 	 */
 	public void listPosDisponible(Carte c) {
-		ArrayList<Coordonnee> listPos = new ArrayList<Coordonnee>();
+
 		int posX = this.coordonnee.getX();
 		int posY = this.coordonnee.getY();
-		int distance = this.distance;
+		int distance = this.distanceUnite;
 
-		for (int i = 1; i <= distance; i++) {
-			listCoordAcceccible.addAll(getCoord(c, posX + i, posY));
-			listCoordAcceccible.addAll(getCoord(c, posX - i, posY));
-			listCoordAcceccible.addAll(getCoord(c, posX, posY + i));
-			listCoordAcceccible.addAll(getCoord(c, posX, posY - i));
-		}
+		getCoord(c, distance, posX, posY);
+
 	}
 
-	public ArrayList<Coordonnee> getCoord(Carte c, int posX, int posY) {
-		ArrayList<Coordonnee> listTemp = new ArrayList<Coordonnee>();
-		try {
-			System.out.println();
-			if (posX <= c.getWidth() && c.caseVide(posX, posY)) {
-				Coordonnee coordTemp = new Coordonnee(posX, posY);
-				listTemp.add(coordTemp);
-			}
-			if (posX >= 0 && c.caseVide(posX, posY)) {
-				Coordonnee coordTemp = new Coordonnee(posX, posY);
-				listTemp.add(coordTemp);
-			}
-			if (posY <= c.getHeight() && c.caseVide(posX, posY)) {
-				Coordonnee coordTemp = new Coordonnee(posX, posY);
-				listTemp.add(coordTemp);
-			}
-			if (posY >= 0 && c.caseVide(posX, posY)) {
-				Coordonnee coordTemp = new Coordonnee(posX, posY);
-				listTemp.add(coordTemp);
-			}
-		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
-		}
+	public void getCoord(Carte c, int distance, int posX, int posY) {
 
-		return listTemp;
+		while (distance > 0) {
+			// Case droite
+			if (posY + 1 < c.getWidth()) {
+				if (c.caseVide(posX, posY + 1)) {
+					Coordonnee coordTemp = new Coordonnee(posX, posY + 1);
+
+					this.listCoordAccessible.add(coordTemp);
+					distance = distance - 1;
+					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
+					
+				}
+			}
+
+			// Case gauche
+			if (posY - 1 >= 0) {
+				if (c.caseVide(posX, posY - 1)) {
+					Coordonnee coordTemp = new Coordonnee(posX, posY - 1);
+
+					this.listCoordAccessible.add(coordTemp);
+					distance = distance - 1;
+					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
+					
+
+				}
+			}
+			// Case bas
+			if (posX + 1 < c.getHeight()) {
+				if (c.caseVide(posX + 1, posY)) {
+					Coordonnee coordTemp = new Coordonnee(posX + 1, posY);
+					System.out.println(coordTemp);
+
+					this.listCoordAccessible.add(coordTemp);
+					distance = distance - 1;
+					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
+					
+				}
+			}
+			// Case haut
+			if (posX - 1 >= 0) {
+				if (c.caseVide(posX - 1, posY)) {
+					Coordonnee coordTemp = new Coordonnee(posX - 1, posY);
+					// System.out.println(coordTemp);
+
+					this.listCoordAccessible.add(coordTemp);
+					distance = distance - 1;
+					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
+					
+				}
+
+			}
+		}
 	}
 
 	public int getDistance() {
-		return distance;
+		return distanceUnite;
 	}
 
 	public void setDistance(int distance) {
-		this.distance = distance;
+		this.distanceUnite = distance;
 	}
 
 	public double getForce() {

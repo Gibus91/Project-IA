@@ -21,7 +21,7 @@ public class Carte {
 	public Carte() {
 		width = 20;
 		height = 20;
-		carte = new String[height][width];
+		carte = new String[width][height];
 		initCarte();
 		listUnit = new ArrayList<UniteCombat>();
 	}
@@ -39,15 +39,14 @@ public class Carte {
 	public void initCarte() {
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 20; j++) {
-				carte[i][j] = " ";
+				carte[i][j] = "";
 			}
 		}
 	}
 
 	public Boolean caseVide(int x, int y) {
 		Boolean retour = false;
-		if(carte[x][y] == ""){
-			System.out.println("vide");
+		if(carte[x][y].isEmpty()){
 			retour = true;
 		}
 		return retour;
