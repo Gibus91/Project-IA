@@ -71,13 +71,17 @@ public class Carte {
 	
 		Carte c = new Carte();
 		u1.listPosDisponible(c);
-		System.out.println(u1.getListCoordAcceccible());
+		System.out.println(u);
+		u.setLevel(2);
+		System.out.println(u);
 		c.listUnit.add(u);
 		c.listUnit.add(u1);
+	
 		c.setUniteCarte();
-		System.out.println("carte avant");
+	
+	/*	System.out.println("carte avant");
 		c.afficheCarte();
-		/*u.mouvement(3, 1);
+		u.mouvement(3, 1);
 		c.jouerTour();
 		System.out.println("carte après");
 		c.afficheCarte();*/

@@ -21,6 +21,11 @@ public class Coordonnee {
 		return "Coordonnee [x=" + x + ", y=" + y + "]";
 	}
 
+	public boolean equals (Object o) {
+	    Coordonnee coord = (Coordonnee) o;
+	        if (coord.x == x && coord.y == y) return true;
+	        return false;
+	    }
 
 	public int getX() {
 		return this.x;

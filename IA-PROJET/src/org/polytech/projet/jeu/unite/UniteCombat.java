@@ -1,8 +1,6 @@
 package org.polytech.projet.jeu.unite;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.polytech.projet.jeu.Carte;
 import org.polytech.projet.jeu.util.Coordonnee;
@@ -12,16 +10,26 @@ import org.polytech.projet.jeu.util.Coordonnee;
  * @author jean-baptisteborel
  * 
  */
-public class UniteCombat extends Unite {
-
+public abstract class UniteCombat extends Unite {
+	private char symbole;
 	private int distanceUnite;
 	private int porteeArme;
 	// Position x et y de l'unité sur la carte
 	private Coordonnee coordonnee;
 	private double force;
+	private int level;
 	private double armure;
 	private double vie;
-	private Set<Coordonnee> listCoordAccessible;
+
+	public double getVie() {
+		return vie;
+	}
+
+	public void setVie(double vie) {
+		this.vie = vie;
+	}
+
+	private ArrayList<Coordonnee> listCoordAccessible;
 
 	/**
 	 * 
@@ -35,25 +43,23 @@ public class UniteCombat extends Unite {
 	 * @param vie
 	 */
 
-	public UniteCombat(String name, int dist, int portee, Coordonnee coord,
-			double force, double armure, double vie) {
+	public UniteCombat(String name, char symbole, int dist, int portee,
+			Coordonnee coord, double force, int level, double armure, double vie) {
 		super(name);
-		this.distanceUnite = dist;
+		this.setSymbole(symbole);
+		this.setDistance(dist);
 		this.setPorteeArme(portee);
 		this.setCoordonnee(coord);
-		this.force = force;
-		this.armure = armure;
-		this.vie = vie;
-		this.listCoordAccessible = new HashSet<Coordonnee>();
+		this.setForce(force);
+		this.setLevel(level);
+		this.setArmure(armure);
+		this.setVie(vie);
+		this.listCoordAccessible = new ArrayList<Coordonnee>();
 	}
 
-	public Set<Coordonnee> getListCoordAcceccible() {
-		return listCoordAccessible;
-	}
+	public abstract void updateUnit();
 
-	public void setListCoordAcceccible(HashSet<Coordonnee> listCoordAcceccible) {
-		this.listCoordAccessible = listCoordAcceccible;
-	}
+	public abstract String toString();
 
 	/**
 	 * Lors d'un combat, il est possible que la force de l'enemie, soit
@@ -88,7 +94,8 @@ public class UniteCombat extends Unite {
 		int dist = this.distanceUnite;
 		/**
 		 * TODO: Enlever commentaires debug. Rajouter une exception si le
-		 * déplacement est illicite.
+		 * déplacement est illicite. Prendre en compte la liste des mouvements
+		 * autoriser. Simplifie grandement la fonction mouvement·
 		 */
 		System.out.println("Dist " + dist);
 		System.out.println("deplacement axe x : "
@@ -111,77 +118,84 @@ public class UniteCombat extends Unite {
 	}
 
 	/**
-	 * revoir la fonction, peut-être en faire deux, dont une recurcive qui va
-	 * juste chercher aux 4 côtés
+	 * Fonction qui permet de lancer le calcul des positions accessible pour
+	 * chaque unité
 	 * 
 	 * @param c
-	 * @return
 	 */
 	public void listPosDisponible(Carte c) {
 
 		int posX = this.coordonnee.getX();
 		int posY = this.coordonnee.getY();
 		int distance = this.distanceUnite;
-
 		getCoord(c, distance, posX, posY);
-
 	}
 
+	/**
+	 * Fonction récurcive qui calcul les positions accessible au nord, au sud, à
+	 * l'est et à l'ouest
+	 * 
+	 * @param c
+	 *            une carte dans laquelle évolue l'unité
+	 * @param distance
+	 *            la distance maximum que peut parcourir l'unité
+	 * @param posX
+	 *            la position X de l'unité
+	 * @param posY
+	 *            la position Y de l'unité
+	 */
 	public void getCoord(Carte c, int distance, int posX, int posY) {
 
 		while (distance > 0) {
+			distance = distance - 1;
 			// Case droite
 			if (posY + 1 < c.getWidth()) {
 				if (c.caseVide(posX, posY + 1)) {
 					Coordonnee coordTemp = new Coordonnee(posX, posY + 1);
-
-					this.listCoordAccessible.add(coordTemp);
-					distance = distance - 1;
-					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
-					
+					if (!this.listCoordAccessible.contains(coordTemp)) {
+						this.listCoordAccessible.add(coordTemp);
+						getCoord(c, distance, coordTemp.getX(),
+								coordTemp.getY());
+					}
 				}
 			}
-
 			// Case gauche
 			if (posY - 1 >= 0) {
 				if (c.caseVide(posX, posY - 1)) {
 					Coordonnee coordTemp = new Coordonnee(posX, posY - 1);
-
-					this.listCoordAccessible.add(coordTemp);
-					distance = distance - 1;
-					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
-					
-
+					if (!this.listCoordAccessible.contains(coordTemp)) {
+						this.listCoordAccessible.add(coordTemp);
+						getCoord(c, distance, coordTemp.getX(),
+								coordTemp.getY());
+					}
 				}
 			}
 			// Case bas
 			if (posX + 1 < c.getHeight()) {
 				if (c.caseVide(posX + 1, posY)) {
 					Coordonnee coordTemp = new Coordonnee(posX + 1, posY);
-					System.out.println(coordTemp);
-
-					this.listCoordAccessible.add(coordTemp);
-					distance = distance - 1;
-					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
-					
+					if (!this.listCoordAccessible.contains(coordTemp)) {
+						this.listCoordAccessible.add(coordTemp);
+						getCoord(c, distance, coordTemp.getX(),
+								coordTemp.getY());
+					}
 				}
 			}
 			// Case haut
 			if (posX - 1 >= 0) {
 				if (c.caseVide(posX - 1, posY)) {
 					Coordonnee coordTemp = new Coordonnee(posX - 1, posY);
-					// System.out.println(coordTemp);
-
-					this.listCoordAccessible.add(coordTemp);
-					distance = distance - 1;
-					getCoord(c, distance, coordTemp.getX(), coordTemp.getY());
-					
+					if (!this.listCoordAccessible.contains(coordTemp)) {
+						this.listCoordAccessible.add(coordTemp);
+						getCoord(c, distance, coordTemp.getX(),
+								coordTemp.getY());
+					}
 				}
-
 			}
 		}
 	}
 
+	// Accesseur
 	public int getDistance() {
 		return distanceUnite;
 	}
@@ -220,6 +234,31 @@ public class UniteCombat extends Unite {
 
 	public void setCoordonnee(Coordonnee coordonnee) {
 		this.coordonnee = coordonnee;
+	}
+
+	public char getSymbole() {
+		return symbole;
+	}
+
+	public void setSymbole(char symbole) {
+		this.symbole = symbole;
+	}
+
+	public ArrayList<Coordonnee> getListCoordAcceccible() {
+		return listCoordAccessible;
+	}
+
+	public void setListCoordAcceccible(ArrayList<Coordonnee> listCoordAcceccible) {
+		this.listCoordAccessible = listCoordAcceccible;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+		this.updateUnit();
 	}
 
 }
