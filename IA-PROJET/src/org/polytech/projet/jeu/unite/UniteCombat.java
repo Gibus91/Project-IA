@@ -11,13 +11,13 @@ import org.polytech.projet.jeu.util.Coordonnee;
  * 
  */
 public abstract class UniteCombat extends Unite {
+
 	private char symbole;
 	private int distanceUnite;
 	private int porteeArme;
 	// Position x et y de l'unité sur la carte
 	private Coordonnee coordonnee;
 	private double force;
-	private int level;
 	private double armure;
 	private double vie;
 
@@ -44,14 +44,13 @@ public abstract class UniteCombat extends Unite {
 	 */
 
 	public UniteCombat(String name, char symbole, int dist, int portee,
-			Coordonnee coord, double force, int level, double armure, double vie) {
+			Coordonnee coord, double force, double armure, double vie) {
 		super(name);
 		this.setSymbole(symbole);
 		this.setDistance(dist);
 		this.setPorteeArme(portee);
 		this.setCoordonnee(coord);
 		this.setForce(force);
-		this.setLevel(level);
 		this.setArmure(armure);
 		this.setVie(vie);
 		this.listCoordAccessible = new ArrayList<Coordonnee>();
@@ -251,14 +250,4 @@ public abstract class UniteCombat extends Unite {
 	public void setListCoordAcceccible(ArrayList<Coordonnee> listCoordAcceccible) {
 		this.listCoordAccessible = listCoordAcceccible;
 	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-		this.updateUnit();
-	}
-
 }

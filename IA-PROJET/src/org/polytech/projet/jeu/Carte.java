@@ -2,6 +2,8 @@ package org.polytech.projet.jeu;
 
 import java.util.ArrayList;
 
+import org.polytech.projet.jeu.batiment.Batiment;
+import org.polytech.projet.jeu.batiment.Ecurie;
 import org.polytech.projet.jeu.unite.Cavalier;
 import org.polytech.projet.jeu.unite.UniteCombat;
 import org.polytech.projet.jeu.util.Coordonnee;
@@ -46,7 +48,7 @@ public class Carte {
 
 	public Boolean caseVide(int x, int y) {
 		Boolean retour = false;
-		if(carte[x][y].isEmpty()){
+		if (carte[x][y].isEmpty()) {
 			retour = true;
 		}
 		return retour;
@@ -66,25 +68,26 @@ public class Carte {
 	public static void main(String[] argv) {
 		Coordonnee coord = new Coordonnee(0, 0);
 		Coordonnee coord1 = new Coordonnee(3, 0);
+		Coordonnee coord2 = new Coordonnee(1, 0);
+
+		Batiment b = new Ecurie(coord2);
+	
 		UniteCombat u = new Cavalier(coord);
 		UniteCombat u1 = new Cavalier(coord1);
-	
+
 		Carte c = new Carte();
 		u1.listPosDisponible(c);
 		System.out.println(u);
-		u.setLevel(2);
-		System.out.println(u);
 		c.listUnit.add(u);
 		c.listUnit.add(u1);
-	
+
 		c.setUniteCarte();
-	
-	/*	System.out.println("carte avant");
-		c.afficheCarte();
-		u.mouvement(3, 1);
-		c.jouerTour();
-		System.out.println("carte après");
-		c.afficheCarte();*/
+
+		/*
+		 * System.out.println("carte avant"); c.afficheCarte(); u.mouvement(3,
+		 * 1); c.jouerTour(); System.out.println("carte après");
+		 * c.afficheCarte();
+		 */
 
 	}
 

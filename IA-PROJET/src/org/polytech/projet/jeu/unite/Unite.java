@@ -1,7 +1,7 @@
 package org.polytech.projet.jeu.unite;
 
 /**
- * 
+ * Classe abstraite d'unité
  * @author jean-baptisteborel
  * 
  */
@@ -13,13 +13,9 @@ public abstract class Unite {
 	 * Création d'une unité du jeu
 	 * 
 	 * @param name
-	 * @param dist
-	 * @param force
-	 * @param armure
 	 */
 	public Unite(String name) {
 		this.setName(name);
-
 	}
 
 	public String getName() {
@@ -29,5 +25,4 @@ public abstract class Unite {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 }

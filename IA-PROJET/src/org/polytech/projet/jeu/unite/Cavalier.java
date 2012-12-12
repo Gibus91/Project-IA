@@ -21,10 +21,9 @@ public class Cavalier extends UniteCombat {
 		// Portee arme
 		// Coordonnee
 		// Force
-		// Level
 		// Armure
 		// Vie
-		super("Cavalier", 'c', 2, 1, c, 4.0, 1, 10.0, 100.0);
+		super("Cavalier", 'c', 2, 1, c, 4.0, 10.0, 100.0);
 	}
 
 	/**
@@ -33,12 +32,10 @@ public class Cavalier extends UniteCombat {
 	 * elle mme on met ˆ jour les valeurs.
 	 */
 	public void updateUnit() {
-		if (this.getLevel() > 1) {
-			double oldArmure = this.getArmure();
-			double oldForce = this.getForce();
-			this.setArmure(oldArmure * 1.1);
-			this.setForce(oldForce * 1.15);
-		}
+		double oldArmure = this.getArmure();
+		double oldForce = this.getForce();
+		this.setArmure(oldArmure * 1.1);
+		this.setForce(oldForce * 1.15);
 	}
 
 	@Override
@@ -46,7 +43,7 @@ public class Cavalier extends UniteCombat {
 		return "Cavalier [symbole=" + this.getSymbole() + ", distanceUnite="
 				+ this.getDistance() + ", porteeArme=" + this.getPorteeArme()
 				+ ", coordonnee=" + this.getCoordonnee() + ", force="
-				+ this.getForce() + ", level=" + this.getLevel() + ", armure="
-				+ this.getArmure() + ", vie=" + this.getVie() + "]";
+				+ this.getForce() + ", armure=" + this.getArmure() + ", vie="
+				+ this.getVie() + "]";
 	}
 }
