@@ -12,12 +12,14 @@ public abstract class Batiment {
 	private char symbole;
 	private int levelBatiment;
 	private Coordonnee coordonneeBatiment;
-	
-	Batiment(String name, char symbole, int levelBatiment, Coordonnee coordonneeBatiment){
+
+	Batiment(String name, char symbole, int levelBatiment,
+			Coordonnee coordonneeBatiment) {
 		this.setName(name);
 		this.setSymbole(symbole);
 		this.setLevelBatiment(levelBatiment);
 		this.setCoordonneeBatiment(coordonneeBatiment);
+
 	}
 
 	public String getName() {
@@ -51,5 +53,5 @@ public abstract class Batiment {
 	public void setCoordonneeBatiment(Coordonnee coordonneeBatiment) {
 		this.coordonneeBatiment = coordonneeBatiment;
 	}
-	
+
 }

@@ -28,10 +28,15 @@ public class Cavalier extends UniteCombat {
 
 	/**
 	 * On modifie les valeurs de la force et de l'armure du cavalier selon un
-	 * pourcentage défini à l'avance. Dès qu'on améliore l'écurie ou l'unité en
-	 * elle même on met à jour les valeurs.
+	 * pourcentage défini à l'avance. Dès qu'on améliore l'écurie les unités
+	 * sont automatiquements mis à jour
 	 */
 	public void updateUnit() {
+		int oldDistance = this.getDistance();
+		this.setDistance(oldDistance + 1);
+	}
+
+	public void updateUnitForge() {
 		double oldArmure = this.getArmure();
 		double oldForce = this.getForce();
 		this.setArmure(oldArmure * 1.1);

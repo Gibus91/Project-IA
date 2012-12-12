@@ -20,15 +20,6 @@ public abstract class UniteCombat extends Unite {
 	private double force;
 	private double armure;
 	private double vie;
-
-	public double getVie() {
-		return vie;
-	}
-
-	public void setVie(double vie) {
-		this.vie = vie;
-	}
-
 	private ArrayList<Coordonnee> listCoordAccessible;
 
 	/**
@@ -57,6 +48,8 @@ public abstract class UniteCombat extends Unite {
 	}
 
 	public abstract void updateUnit();
+
+	public abstract void updateUnitForge();
 
 	public abstract String toString();
 
@@ -250,4 +243,13 @@ public abstract class UniteCombat extends Unite {
 	public void setListCoordAcceccible(ArrayList<Coordonnee> listCoordAcceccible) {
 		this.listCoordAccessible = listCoordAcceccible;
 	}
+
+	public double getVie() {
+		return vie;
+	}
+
+	public void setVie(double vie) {
+		this.vie = vie;
+	}
+
 }
