@@ -68,8 +68,7 @@ public class Carte {
 
 	public void setUniteCarte() {
 		for (UniteCombat u : listUnit)
-			carte[u.getCoordonnee().getX()][u.getCoordonnee().getY()] = u
-					.getName();
+			carte[u.getCoordonnee().getX()][u.getCoordonnee().getY()] = Character.toString(u.getSymbole());
 	}
 
 	public static void main(String[] argv) {
@@ -86,6 +85,7 @@ public class Carte {
 		b.updateAllUnit();
 		for (UniteCombat u : b.getListUnit())
 			System.out.println(u);
+		c.afficheCarte();
 		/*
 		 * System.out.println("carte avant"); c.afficheCarte(); u.mouvement(3,
 		 * 1); c.jouerTour(); System.out.println("carte après");
