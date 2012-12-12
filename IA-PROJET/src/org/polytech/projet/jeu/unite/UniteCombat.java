@@ -2,7 +2,7 @@ package org.polytech.projet.jeu.unite;
 
 import java.util.ArrayList;
 
-import org.polytech.projet.jeu.Carte;
+import org.polytech.projet.jeu.util.Carte;
 import org.polytech.projet.jeu.util.Coordonnee;
 
 /**

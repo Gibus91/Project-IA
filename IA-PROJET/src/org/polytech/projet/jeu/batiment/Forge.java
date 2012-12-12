@@ -1,7 +1,7 @@
 package org.polytech.projet.jeu.batiment;
 
-import org.polytech.projet.jeu.Carte;
 import org.polytech.projet.jeu.unite.UniteCombat;
+import org.polytech.projet.jeu.util.Carte;
 import org.polytech.projet.jeu.util.Coordonnee;
 
 public class Forge extends BatimentProduction {

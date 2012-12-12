@@ -1,14 +1,10 @@
-package org.polytech.projet.jeu;
+package org.polytech.projet.jeu.util;
 
 import java.util.ArrayList;
 
-import org.polytech.projet.jeu.batiment.Batiment;
 import org.polytech.projet.jeu.batiment.BatimentProduction;
 import org.polytech.projet.jeu.batiment.Ecurie;
-import org.polytech.projet.jeu.batiment.Forge;
-import org.polytech.projet.jeu.unite.Cavalier;
 import org.polytech.projet.jeu.unite.UniteCombat;
-import org.polytech.projet.jeu.util.Coordonnee;
 
 /**
  * 
