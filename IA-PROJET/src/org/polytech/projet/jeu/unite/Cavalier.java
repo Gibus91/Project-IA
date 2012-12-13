@@ -38,9 +38,9 @@ public class Cavalier extends UniteCombat {
 
 	public void updateUnitForge() {
 		double oldArmure = this.getArmure();
-		double oldForce = this.getForce();
+		double oldForce = this.getArme();
 		this.setArmure(oldArmure * 1.1);
-		this.setForce(oldForce * 1.15);
+		this.setArme(oldForce * 1.15);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class Cavalier extends UniteCombat {
 		return "Cavalier [symbole=" + this.getSymbole() + ", distanceUnite="
 				+ this.getDistance() + ", porteeArme=" + this.getPorteeArme()
 				+ ", coordonnee=" + this.getCoordonnee() + ", force="
-				+ this.getForce() + ", armure=" + this.getArmure() + ", vie="
+				+ this.getArme() + ", armure=" + this.getArmure() + ", vie="
 				+ this.getVie() + "]";
 	}
 }

@@ -14,10 +14,10 @@ public abstract class UniteCombat extends Unite {
 
 	private char symbole;
 	private int distanceUnite;
-	private int porteeArme;
 	// Position x et y de l'unité sur la carte
 	private Coordonnee coordonnee;
-	private double force;
+	private int porteeArme;
+	private double arme;
 	private double armure;
 	private double vie;
 	private ArrayList<Coordonnee> listCoordAccessible;
@@ -29,19 +29,19 @@ public abstract class UniteCombat extends Unite {
 	 * @param portee
 	 * @param dx
 	 * @param dy
-	 * @param force
+	 * @param arme
 	 * @param armure
 	 * @param vie
 	 */
 
 	public UniteCombat(String name, char symbole, int dist, int portee,
-			Coordonnee coord, double force, double armure, double vie) {
+			Coordonnee coord, double arme, double armure, double vie) {
 		super(name);
 		this.setSymbole(symbole);
 		this.setDistance(dist);
 		this.setPorteeArme(portee);
 		this.setCoordonnee(coord);
-		this.setForce(force);
+		this.setArme(arme);
 		this.setArmure(armure);
 		this.setVie(vie);
 		this.listCoordAccessible = new ArrayList<Coordonnee>();
@@ -196,12 +196,12 @@ public abstract class UniteCombat extends Unite {
 		this.distanceUnite = distance;
 	}
 
-	public double getForce() {
-		return force;
+	public double getArme() {
+		return arme;
 	}
 
-	public void setForce(double force) {
-		this.force = force;
+	public void setArme(double arme) {
+		this.arme = arme;
 	}
 
 	public double getArmure() {
