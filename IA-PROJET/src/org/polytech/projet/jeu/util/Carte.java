@@ -2,8 +2,11 @@ package org.polytech.projet.jeu.util;
 
 import java.util.ArrayList;
 
+import org.polytech.projet.jeu.batiment.Batiment;
 import org.polytech.projet.jeu.batiment.BatimentProduction;
 import org.polytech.projet.jeu.batiment.Ecurie;
+import org.polytech.projet.jeu.exception.SizeArmyException;
+import org.polytech.projet.jeu.unite.Armee;
 import org.polytech.projet.jeu.unite.UniteCombat;
 
 /**
@@ -14,14 +17,18 @@ import org.polytech.projet.jeu.unite.UniteCombat;
 public class Carte {
 
 	private String[][] carte;
-	private ArrayList<UniteCombat> listUnit;
+	private ArrayList<Batiment> listBatiment;
 
-	public ArrayList<UniteCombat> getListUnit() {
-		return listUnit;
+	public ArrayList<Batiment> getListBatiment() {
+		return listBatiment;
 	}
 
-	public void setListUnit(ArrayList<UniteCombat> listUnit) {
-		this.listUnit = listUnit;
+	public void setListBatiment(ArrayList<Batiment> listBatiment) {
+		this.listBatiment = listBatiment;
+	}
+	
+	public void addBatiment(Batiment b){
+		this.listBatiment.add(b);
 	}
 
 	private int width;
@@ -32,7 +39,7 @@ public class Carte {
 		height = 20;
 		carte = new String[width][height];
 		initCarte();
-		listUnit = new ArrayList<UniteCombat>();
+		listBatiment = new ArrayList<Batiment>();
 	}
 
 	public void afficheCarte() {
@@ -63,29 +70,57 @@ public class Carte {
 
 	public void jouerTour() {
 		initCarte();
-		setUniteCarte();
+		setCarte();
 	}
 
-	public void setUniteCarte() {
-		for (UniteCombat u : listUnit)
-			carte[u.getCoordonnee().getX()][u.getCoordonnee().getY()] = Character.toString(u.getSymbole());
+	public void setCarte() {
+		for (Batiment b : listBatiment) {
+			carte[b.getCoordonneeBatiment().getX()][b.getCoordonneeBatiment().getY()] = Character.toString(b.getSymbole());
+			for (UniteCombat u : b.getListUnit()) {
+				carte[u.getCoordonnee().getX()][u.getCoordonnee().getY()] = Character
+						.toString(u.getSymbole());
+			}
+		}
 	}
 
 	public static void main(String[] argv) {
 		Coordonnee coord = new Coordonnee(0, 0);
 
 		Carte c = new Carte();
+		Armee a = new Armee(new Coordonnee(0,1));
+		
 		BatimentProduction b = new Ecurie(coord);
+		c.addBatiment(b);
 		b.makeAction(c);
 
 		b.makeAction(c);
-		for (UniteCombat u : b.getListUnit())
+		for(Batiment lb : c.getListBatiment()){
+			for(UniteCombat u : lb.getListUnit()){
+				System.out.println(u);
+				// u.listPosDisponible(c);
+				u.afficheListPosDispo();
+				try {
+					a.ajouterSoldat(u);
+				} catch (SizeArmyException e) {
+					// TODO Auto-generated catch block
+				}
+			}
+		}
+		/*for (Batiment u : b.getListUnit()) {
 			System.out.println(u);
+			// u.listPosDisponible(c);
+			u.afficheListPosDispo();
+			try {
+				a.ajouterSoldat(u);
+			} catch (SizeArmyException e) {
+				// TODO Auto-generated catch block
+			}
+		}
 
-		b.updateAllUnit();
-		for (UniteCombat u : b.getListUnit())
-			System.out.println(u);
-		c.afficheCarte();
+		
+		 * b.updateAllUnit(); for (UniteCombat u : b.getListUnit())
+		 * System.out.println(u); c.afficheCarte();
+		 */
 		/*
 		 * System.out.println("carte avant"); c.afficheCarte(); u.mouvement(3,
 		 * 1); c.jouerTour(); System.out.println("carte après");

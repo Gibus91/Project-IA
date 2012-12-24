@@ -1,5 +1,8 @@
 package org.polytech.projet.jeu.batiment;
 
+import java.util.ArrayList;
+
+import org.polytech.projet.jeu.unite.UniteCombat;
 import org.polytech.projet.jeu.util.Coordonnee;
 
 /**
@@ -12,13 +15,14 @@ public abstract class Batiment {
 	private char symbole;
 	private int levelBatiment;
 	private Coordonnee coordonneeBatiment;
-
+	private ArrayList<UniteCombat> listUnit;
 	Batiment(String name, char symbole, int levelBatiment,
 			Coordonnee coordonneeBatiment) {
 		this.setName(name);
 		this.setSymbole(symbole);
 		this.setLevelBatiment(levelBatiment);
 		this.setCoordonneeBatiment(coordonneeBatiment);
+		this.listUnit = new ArrayList<UniteCombat>();
 
 	}
 
@@ -52,6 +56,13 @@ public abstract class Batiment {
 
 	public void setCoordonneeBatiment(Coordonnee coordonneeBatiment) {
 		this.coordonneeBatiment = coordonneeBatiment;
+	}
+	public ArrayList<UniteCombat> getListUnit() {
+		return listUnit;
+	}
+
+	public void setListUnit(ArrayList<UniteCombat> listUnit) {
+		this.listUnit = listUnit;
 	}
 
 }

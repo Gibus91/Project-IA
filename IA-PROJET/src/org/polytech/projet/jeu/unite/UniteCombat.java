@@ -49,7 +49,8 @@ public abstract class UniteCombat extends Unite {
 
 	public abstract void updateUnit();
 
-	public abstract void updateUnitForge();
+	public abstract void updateUnitForce();
+	public abstract void updateUnitDefence();
 
 	public abstract String toString();
 
@@ -110,6 +111,15 @@ public abstract class UniteCombat extends Unite {
 	}
 
 	/**
+	 * Fonction qui permet d'afficher la liste des coordonnées acceccible pour
+	 * l'unité
+	 */
+	public void afficheListPosDispo() {
+		for (Coordonnee c : this.getListCoordAcceccible())
+			System.out.println(c);
+	}
+
+	/**
 	 * Fonction qui permet de lancer le calcul des positions accessible pour
 	 * chaque unité
 	 * 
@@ -121,10 +131,13 @@ public abstract class UniteCombat extends Unite {
 		int posY = this.coordonnee.getY();
 		int distance = this.distanceUnite;
 		getCoord(c, distance, posX, posY);
+		if (this.getListCoordAcceccible().contains(this.getCoordonnee())) {
+			this.getListCoordAcceccible().remove(this.getCoordonnee());
+		}
 	}
 
 	/**
-	 * Fonction récurcive qui calcul les positions accessible au nord, au sud, à
+	 * Fonction récursive qui calcul les positions accessible au nord, au sud, à
 	 * l'est et à l'ouest
 	 * 
 	 * @param c
