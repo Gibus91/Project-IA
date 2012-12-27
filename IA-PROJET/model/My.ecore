@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="org.polytech.model.jeu" nsPrefix="org.polytech.model.jeu">
+  <eSubpackages name="batiment" nsURI="org.polytech.model.jeu.batiment" nsPrefix="batiment">
+    <eClassifiers xsi:type="ecore:EClass" name="Batiment" abstract="true" interface="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="levelBatiment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="1"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="coordonneeBatiment" eType="#//util/Coordonnee"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbole" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="listUnit" upperBound="10"
+          eType="#//unite/Unite"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BatimentProduction" eSuperTypes="#//batiment/Batiment"/>
+  </eSubpackages>
+  <eSubpackages name="util" nsURI="org.polytech.model.jeu.util" nsPrefix="util">
+    <eClassifiers xsi:type="ecore:EClass" name="Coordonnee">
+      <eOperations name="equals" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eParameters name="Coordonnee" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="unite" nsURI="org.polytech.model.jeu.unite" nsPrefix="unite">
+    <eClassifiers xsi:type="ecore:EClass" name="Unite">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbole" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="UniteCombat" eSuperTypes="#//unite/Unite">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="arme" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="coordonneeUnit" eType="#//util/Coordonnee"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>
