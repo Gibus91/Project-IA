@@ -12,6 +12,7 @@
           eType="#//unite/Unite"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BatimentProduction" eSuperTypes="#//batiment/Batiment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BatimentDefence"/>
   </eSubpackages>
   <eSubpackages name="util" nsURI="org.polytech.model.jeu.util" nsPrefix="util">
     <eClassifiers xsi:type="ecore:EClass" name="Coordonnee">
@@ -31,6 +32,24 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="arme" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
           defaultValueLiteral="0.0"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="coordonneeUnit" eType="#//util/Coordonnee"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceUnite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="vie" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="100.0"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="armure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="porteeArme" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="1"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="listCoordAccessible"
+          unique="false" upperBound="100" eType="#//util/Coordonnee"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="joueur" nsURI="org.polytech.model.jeu.joueur" nsPrefix="joueur">
+    <eClassifiers xsi:type="ecore:EClass" name="Joueur"/>
+  </eSubpackages>
+  <eSubpackages name="carte" nsURI="org.polytech.model.jeu.carte" nsPrefix="carte">
+    <eClassifiers xsi:type="ecore:EClass" name="Carte"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Ville">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="city"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
