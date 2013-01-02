@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/IA-PROJET/src" modelPluginID="myModel" modelName="My"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/IA-PROJET/src" modelPluginID="IA-PROJET" modelName="Model_generator"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
   <foreignModel>My.ecore</foreignModel>
-  <genPackages prefix="Batiment" basePackage="org.polytech.model.jeu" disposableProviderFactory="true"
+  <genPackages prefix="Model" basePackage="org.polytech.projet" disposableProviderFactory="true"
       ecorePackage="My.ecore#/">
-    <nestedGenPackages prefix="Batiment" basePackage="org.polytech.model.jeu.model"
-        disposableProviderFactory="true" ecorePackage="My.ecore#//batiment">
+    <nestedGenPackages prefix="Batiment" disposableProviderFactory="true" ecorePackage="My.ecore#//batiment">
       <genClasses image="false" ecoreClass="My.ecore#//batiment/Batiment">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//batiment/Batiment/nom"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//batiment/Batiment/levelBatiment"/>
@@ -19,8 +18,7 @@
       <genClasses ecoreClass="My.ecore#//batiment/BatimentProduction"/>
       <genClasses ecoreClass="My.ecore#//batiment/BatimentDefence"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Util" basePackage="org.polytech.model.jeu.model" disposableProviderFactory="true"
-        ecorePackage="My.ecore#//util">
+    <nestedGenPackages prefix="Util" disposableProviderFactory="true" ecorePackage="My.ecore#//util">
       <genClasses ecoreClass="My.ecore#//util/Coordonnee">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//util/Coordonnee/x"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//util/Coordonnee/y"/>
@@ -29,8 +27,7 @@
         </genOperations>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Unite" basePackage="org.polytech.model.jeu.model" disposableProviderFactory="true"
-        ecorePackage="My.ecore#//unite">
+    <nestedGenPackages prefix="Unite" disposableProviderFactory="true" ecorePackage="My.ecore#//unite">
       <genClasses ecoreClass="My.ecore#//unite/Unite">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//unite/Unite/name"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//unite/Unite/symbole"/>
@@ -48,14 +45,12 @@
       </genClasses>
       <genClasses ecoreClass="My.ecore#//unite/UniteProduction"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Joueur" basePackage="org.polytech.model.jeu.model"
-        disposableProviderFactory="true" ecorePackage="My.ecore#//joueur">
+    <nestedGenPackages prefix="Joueur" disposableProviderFactory="true" ecorePackage="My.ecore#//joueur">
       <genClasses ecoreClass="My.ecore#//joueur/Joueur"/>
       <genClasses ecoreClass="My.ecore#//joueur/JoueurHumain"/>
       <genClasses ecoreClass="My.ecore#//joueur/JoueurIA"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Carte" basePackage="org.polytech.model.jeu.model" disposableProviderFactory="true"
-        ecorePackage="My.ecore#//carte">
+    <nestedGenPackages prefix="Carte" disposableProviderFactory="true" ecorePackage="My.ecore#//carte">
       <genClasses ecoreClass="My.ecore#//carte/Carte">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference My.ecore#//carte/Carte/listUnite"/>
