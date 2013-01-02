@@ -31,6 +31,15 @@ public interface BatimentFactory extends EFactory {
 	BatimentProduction createBatimentProduction();
 
 	/**
+	 * Returns a new object of class '<em>Defence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Defence</em>'.
+	 * @generated
+	 */
+	BatimentDefence createBatimentDefence();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

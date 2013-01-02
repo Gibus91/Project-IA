@@ -17,6 +17,7 @@
             ecoreFeature="ecore:EReference My.ecore#//batiment/Batiment/listUnit"/>
       </genClasses>
       <genClasses ecoreClass="My.ecore#//batiment/BatimentProduction"/>
+      <genClasses ecoreClass="My.ecore#//batiment/BatimentDefence"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Util" basePackage="jeu" disposableProviderFactory="true"
         ecorePackage="My.ecore#//util">
@@ -38,6 +39,31 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//unite/UniteCombat/arme"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference My.ecore#//unite/UniteCombat/coordonneeUnit"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//unite/UniteCombat/distanceUnite"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//unite/UniteCombat/vie"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//unite/UniteCombat/armure"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//unite/UniteCombat/porteeArme"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference My.ecore#//unite/UniteCombat/listCoordAccessible"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Joueur" basePackage="org.polytech.model.jeu.model"
+        disposableProviderFactory="true" ecorePackage="My.ecore#//joueur">
+      <genClasses ecoreClass="My.ecore#//joueur/Joueur"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Carte" basePackage="org.polytech.model.jeu.model" disposableProviderFactory="true"
+        ecorePackage="My.ecore#//carte">
+      <genClasses ecoreClass="My.ecore#//carte/Carte">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference My.ecore#//carte/Carte/listUnite"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference My.ecore#//carte/Carte/listBatiment"/>
+        <genOperations ecoreOperation="My.ecore#//carte/Carte/generateMap"/>
+      </genClasses>
+      <genClasses ecoreClass="My.ecore#//carte/Ville">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//carte/Ville/name"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference My.ecore#//carte/Ville/position"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

@@ -79,6 +79,12 @@ public class BatimentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case BatimentPackage.BATIMENT_DEFENCE: {
+				BatimentDefence batimentDefence = (BatimentDefence)theEObject;
+				T result = caseBatimentDefence(batimentDefence);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -110,6 +116,21 @@ public class BatimentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBatimentProduction(BatimentProduction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Defence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Defence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBatimentDefence(BatimentDefence object) {
 		return null;
 	}
 

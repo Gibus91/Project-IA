@@ -57,6 +57,7 @@ public class BatimentFactoryImpl extends EFactoryImpl implements BatimentFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case BatimentPackage.BATIMENT_PRODUCTION: return createBatimentProduction();
+			case BatimentPackage.BATIMENT_DEFENCE: return createBatimentDefence();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -70,6 +71,16 @@ public class BatimentFactoryImpl extends EFactoryImpl implements BatimentFactory
 	public BatimentProduction createBatimentProduction() {
 		BatimentProductionImpl batimentProduction = new BatimentProductionImpl();
 		return batimentProduction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BatimentDefence createBatimentDefence() {
+		BatimentDefenceImpl batimentDefence = new BatimentDefenceImpl();
+		return batimentDefence;
 	}
 
 	/**

@@ -12,12 +12,12 @@
           eType="#//unite/Unite"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BatimentProduction" eSuperTypes="#//batiment/Batiment"/>
-    <eClassifiers xsi:type="ecore:EClass" name="BatimentDefence"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BatimentDefence" eSuperTypes="#//batiment/Batiment"/>
   </eSubpackages>
   <eSubpackages name="util" nsURI="org.polytech.model.jeu.util" nsPrefix="util">
     <eClassifiers xsi:type="ecore:EClass" name="Coordonnee">
       <eOperations name="equals" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-        <eParameters name="Coordonnee" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        <eParameters name="coordonnee" eType="#//util/Coordonnee"/>
       </eOperations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -41,15 +41,37 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="listCoordAccessible"
           unique="false" upperBound="100" eType="#//util/Coordonnee"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="UniteProduction" eSuperTypes="#//unite/Unite"/>
   </eSubpackages>
   <eSubpackages name="joueur" nsURI="org.polytech.model.jeu.joueur" nsPrefix="joueur">
     <eClassifiers xsi:type="ecore:EClass" name="Joueur"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JoueurHumain" eSuperTypes="#//joueur/Joueur"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JoueurIA" eSuperTypes="#//joueur/Joueur"/>
   </eSubpackages>
   <eSubpackages name="carte" nsURI="org.polytech.model.jeu.carte" nsPrefix="carte">
-    <eClassifiers xsi:type="ecore:EClass" name="Carte"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Carte">
+      <eOperations name="generateMap">
+        <eAnnotations source="Fonction qui permet de générer la carte en fonction de la taille en hauteur et en largeur."/>
+      </eOperations>
+      <eOperations name="addUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eParameters name="unite" eType="#//unite/Unite"/>
+      </eOperations>
+      <eOperations name="addBatiment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eParameters name="batiment" eType="#//batiment/Batiment"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="listUnite" unique="false"
+          upperBound="100" eType="#//unite/Unite"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="listBatiment" unique="false"
+          upperBound="100" eType="#//batiment/Batiment"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="20"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="20"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Ville">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="city"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="#//util/Coordonnee"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

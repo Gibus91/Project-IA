@@ -183,6 +183,25 @@ public interface BatimentPackage extends EPackage {
 	 */
 	int BATIMENT_PRODUCTION_FEATURE_COUNT = BATIMENT_FEATURE_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link jeu.batiment.impl.BatimentDefenceImpl <em>Defence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see jeu.batiment.impl.BatimentDefenceImpl
+	 * @see jeu.batiment.impl.BatimentPackageImpl#getBatimentDefence()
+	 * @generated
+	 */
+	int BATIMENT_DEFENCE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Defence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BATIMENT_DEFENCE_FEATURE_COUNT = 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link jeu.batiment.Batiment <em>Batiment</em>}'.
@@ -258,6 +277,16 @@ public interface BatimentPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBatimentProduction();
+
+	/**
+	 * Returns the meta object for class '{@link jeu.batiment.BatimentDefence <em>Defence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Defence</em>'.
+	 * @see jeu.batiment.BatimentDefence
+	 * @generated
+	 */
+	EClass getBatimentDefence();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -340,6 +369,16 @@ public interface BatimentPackage extends EPackage {
 		 * @generated
 		 */
 		EClass BATIMENT_PRODUCTION = eINSTANCE.getBatimentProduction();
+
+		/**
+		 * The meta object literal for the '{@link jeu.batiment.impl.BatimentDefenceImpl <em>Defence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see jeu.batiment.impl.BatimentDefenceImpl
+		 * @see jeu.batiment.impl.BatimentPackageImpl#getBatimentDefence()
+		 * @generated
+		 */
+		EClass BATIMENT_DEFENCE = eINSTANCE.getBatimentDefence();
 
 	}
 

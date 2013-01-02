@@ -7,15 +7,6 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: jeu.batiment,
- jeu.batiment.impl,
- jeu.batiment.util,
- jeu.unite,
- jeu.unite.impl,
- jeu.unite.util,
- jeu.util,
- jeu.util.impl,
- jeu.util.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

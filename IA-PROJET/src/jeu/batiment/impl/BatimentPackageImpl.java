@@ -3,6 +3,7 @@
 package jeu.batiment.impl;
 
 import jeu.batiment.Batiment;
+import jeu.batiment.BatimentDefence;
 import jeu.batiment.BatimentFactory;
 import jeu.batiment.BatimentPackage;
 import jeu.batiment.BatimentProduction;
@@ -21,6 +22,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.polytech.model.jeu.model.carte.CartePackage;
+
+import org.polytech.model.jeu.model.carte.impl.CartePackageImpl;
+
+import org.polytech.model.jeu.model.joueur.JoueurPackage;
+
+import org.polytech.model.jeu.model.joueur.impl.JoueurPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +51,13 @@ public class BatimentPackageImpl extends EPackageImpl implements BatimentPackage
 	 * @generated
 	 */
 	private EClass batimentProductionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass batimentDefenceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -92,16 +108,22 @@ public class BatimentPackageImpl extends EPackageImpl implements BatimentPackage
 		// Obtain or create and register interdependencies
 		UtilPackageImpl theUtilPackage = (UtilPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UtilPackage.eNS_URI) instanceof UtilPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UtilPackage.eNS_URI) : UtilPackage.eINSTANCE);
 		UnitePackageImpl theUnitePackage = (UnitePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UnitePackage.eNS_URI) instanceof UnitePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UnitePackage.eNS_URI) : UnitePackage.eINSTANCE);
+		JoueurPackageImpl theJoueurPackage = (JoueurPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(JoueurPackage.eNS_URI) instanceof JoueurPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(JoueurPackage.eNS_URI) : JoueurPackage.eINSTANCE);
+		CartePackageImpl theCartePackage = (CartePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CartePackage.eNS_URI) instanceof CartePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CartePackage.eNS_URI) : CartePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theBatimentPackage.createPackageContents();
 		theUtilPackage.createPackageContents();
 		theUnitePackage.createPackageContents();
+		theJoueurPackage.createPackageContents();
+		theCartePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theBatimentPackage.initializePackageContents();
 		theUtilPackage.initializePackageContents();
 		theUnitePackage.initializePackageContents();
+		theJoueurPackage.initializePackageContents();
+		theCartePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theBatimentPackage.freeze();
@@ -180,6 +202,15 @@ public class BatimentPackageImpl extends EPackageImpl implements BatimentPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBatimentDefence() {
+		return batimentDefenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BatimentFactory getBatimentFactory() {
 		return (BatimentFactory)getEFactoryInstance();
 	}
@@ -211,6 +242,8 @@ public class BatimentPackageImpl extends EPackageImpl implements BatimentPackage
 		createEReference(batimentEClass, BATIMENT__LIST_UNIT);
 
 		batimentProductionEClass = createEClass(BATIMENT_PRODUCTION);
+
+		batimentDefenceEClass = createEClass(BATIMENT_DEFENCE);
 	}
 
 	/**
@@ -256,6 +289,8 @@ public class BatimentPackageImpl extends EPackageImpl implements BatimentPackage
 		initEReference(getBatiment_ListUnit(), theUnitePackage.getUnite(), null, "listUnit", null, 0, 10, Batiment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(batimentProductionEClass, BatimentProduction.class, "BatimentProduction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(batimentDefenceEClass, BatimentDefence.class, "BatimentDefence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

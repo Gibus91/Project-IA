@@ -139,13 +139,58 @@ public interface UnitePackage extends EPackage {
 	int UNITE_COMBAT__COORDONNEE_UNIT = UNITE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Distance Unite</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNITE_COMBAT__DISTANCE_UNITE = UNITE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Vie</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNITE_COMBAT__VIE = UNITE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Armure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNITE_COMBAT__ARMURE = UNITE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Portee Arme</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNITE_COMBAT__PORTEE_ARME = UNITE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>List Coord Accessible</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNITE_COMBAT__LIST_COORD_ACCESSIBLE = UNITE_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Combat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNITE_COMBAT_FEATURE_COUNT = UNITE_FEATURE_COUNT + 2;
+	int UNITE_COMBAT_FEATURE_COUNT = UNITE_FEATURE_COUNT + 7;
 
 
 	/**
@@ -211,6 +256,61 @@ public interface UnitePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getUniteCombat_CoordonneeUnit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link jeu.unite.UniteCombat#getDistanceUnite <em>Distance Unite</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Distance Unite</em>'.
+	 * @see jeu.unite.UniteCombat#getDistanceUnite()
+	 * @see #getUniteCombat()
+	 * @generated
+	 */
+	EAttribute getUniteCombat_DistanceUnite();
+
+	/**
+	 * Returns the meta object for the attribute '{@link jeu.unite.UniteCombat#getVie <em>Vie</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vie</em>'.
+	 * @see jeu.unite.UniteCombat#getVie()
+	 * @see #getUniteCombat()
+	 * @generated
+	 */
+	EAttribute getUniteCombat_Vie();
+
+	/**
+	 * Returns the meta object for the attribute '{@link jeu.unite.UniteCombat#getArmure <em>Armure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Armure</em>'.
+	 * @see jeu.unite.UniteCombat#getArmure()
+	 * @see #getUniteCombat()
+	 * @generated
+	 */
+	EAttribute getUniteCombat_Armure();
+
+	/**
+	 * Returns the meta object for the attribute '{@link jeu.unite.UniteCombat#getPorteeArme <em>Portee Arme</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Portee Arme</em>'.
+	 * @see jeu.unite.UniteCombat#getPorteeArme()
+	 * @see #getUniteCombat()
+	 * @generated
+	 */
+	EAttribute getUniteCombat_PorteeArme();
+
+	/**
+	 * Returns the meta object for the reference list '{@link jeu.unite.UniteCombat#getListCoordAccessible <em>List Coord Accessible</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>List Coord Accessible</em>'.
+	 * @see jeu.unite.UniteCombat#getListCoordAccessible()
+	 * @see #getUniteCombat()
+	 * @generated
+	 */
+	EReference getUniteCombat_ListCoordAccessible();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -285,6 +385,46 @@ public interface UnitePackage extends EPackage {
 		 * @generated
 		 */
 		EReference UNITE_COMBAT__COORDONNEE_UNIT = eINSTANCE.getUniteCombat_CoordonneeUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Distance Unite</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNITE_COMBAT__DISTANCE_UNITE = eINSTANCE.getUniteCombat_DistanceUnite();
+
+		/**
+		 * The meta object literal for the '<em><b>Vie</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNITE_COMBAT__VIE = eINSTANCE.getUniteCombat_Vie();
+
+		/**
+		 * The meta object literal for the '<em><b>Armure</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNITE_COMBAT__ARMURE = eINSTANCE.getUniteCombat_Armure();
+
+		/**
+		 * The meta object literal for the '<em><b>Portee Arme</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNITE_COMBAT__PORTEE_ARME = eINSTANCE.getUniteCombat_PorteeArme();
+
+		/**
+		 * The meta object literal for the '<em><b>List Coord Accessible</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNITE_COMBAT__LIST_COORD_ACCESSIBLE = eINSTANCE.getUniteCombat_ListCoordAccessible();
 
 	}
 

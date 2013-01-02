@@ -22,6 +22,14 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.polytech.model.jeu.model.carte.CartePackage;
+
+import org.polytech.model.jeu.model.carte.impl.CartePackageImpl;
+
+import org.polytech.model.jeu.model.joueur.JoueurPackage;
+
+import org.polytech.model.jeu.model.joueur.impl.JoueurPackageImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -92,16 +100,22 @@ public class UnitePackageImpl extends EPackageImpl implements UnitePackage {
 		// Obtain or create and register interdependencies
 		BatimentPackageImpl theBatimentPackage = (BatimentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BatimentPackage.eNS_URI) instanceof BatimentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BatimentPackage.eNS_URI) : BatimentPackage.eINSTANCE);
 		UtilPackageImpl theUtilPackage = (UtilPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UtilPackage.eNS_URI) instanceof UtilPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UtilPackage.eNS_URI) : UtilPackage.eINSTANCE);
+		JoueurPackageImpl theJoueurPackage = (JoueurPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(JoueurPackage.eNS_URI) instanceof JoueurPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(JoueurPackage.eNS_URI) : JoueurPackage.eINSTANCE);
+		CartePackageImpl theCartePackage = (CartePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CartePackage.eNS_URI) instanceof CartePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CartePackage.eNS_URI) : CartePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theUnitePackage.createPackageContents();
 		theBatimentPackage.createPackageContents();
 		theUtilPackage.createPackageContents();
+		theJoueurPackage.createPackageContents();
+		theCartePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theUnitePackage.initializePackageContents();
 		theBatimentPackage.initializePackageContents();
 		theUtilPackage.initializePackageContents();
+		theJoueurPackage.initializePackageContents();
+		theCartePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theUnitePackage.freeze();
@@ -171,6 +185,51 @@ public class UnitePackageImpl extends EPackageImpl implements UnitePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getUniteCombat_DistanceUnite() {
+		return (EAttribute)uniteCombatEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUniteCombat_Vie() {
+		return (EAttribute)uniteCombatEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUniteCombat_Armure() {
+		return (EAttribute)uniteCombatEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUniteCombat_PorteeArme() {
+		return (EAttribute)uniteCombatEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUniteCombat_ListCoordAccessible() {
+		return (EReference)uniteCombatEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public UniteFactory getUniteFactory() {
 		return (UniteFactory)getEFactoryInstance();
 	}
@@ -201,6 +260,11 @@ public class UnitePackageImpl extends EPackageImpl implements UnitePackage {
 		uniteCombatEClass = createEClass(UNITE_COMBAT);
 		createEAttribute(uniteCombatEClass, UNITE_COMBAT__ARME);
 		createEReference(uniteCombatEClass, UNITE_COMBAT__COORDONNEE_UNIT);
+		createEAttribute(uniteCombatEClass, UNITE_COMBAT__DISTANCE_UNITE);
+		createEAttribute(uniteCombatEClass, UNITE_COMBAT__VIE);
+		createEAttribute(uniteCombatEClass, UNITE_COMBAT__ARMURE);
+		createEAttribute(uniteCombatEClass, UNITE_COMBAT__PORTEE_ARME);
+		createEReference(uniteCombatEClass, UNITE_COMBAT__LIST_COORD_ACCESSIBLE);
 	}
 
 	/**
@@ -244,6 +308,11 @@ public class UnitePackageImpl extends EPackageImpl implements UnitePackage {
 		initEClass(uniteCombatEClass, UniteCombat.class, "UniteCombat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUniteCombat_Arme(), ecorePackage.getEDouble(), "arme", "0.0", 0, 1, UniteCombat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUniteCombat_CoordonneeUnit(), theUtilPackage.getCoordonnee(), null, "coordonneeUnit", null, 0, 1, UniteCombat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUniteCombat_DistanceUnite(), ecorePackage.getEInt(), "distanceUnite", null, 0, 1, UniteCombat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUniteCombat_Vie(), ecorePackage.getEDouble(), "vie", "100.0", 0, 1, UniteCombat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUniteCombat_Armure(), ecorePackage.getEDouble(), "armure", null, 0, 1, UniteCombat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUniteCombat_PorteeArme(), ecorePackage.getEInt(), "porteeArme", "1", 0, 1, UniteCombat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUniteCombat_ListCoordAccessible(), theUtilPackage.getCoordonnee(), null, "listCoordAccessible", null, 0, 100, UniteCombat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

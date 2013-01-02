@@ -76,6 +76,10 @@ public class BatimentAdapterFactory extends AdapterFactoryImpl {
 				return createBatimentProductionAdapter();
 			}
 			@Override
+			public Adapter caseBatimentDefence(BatimentDefence object) {
+				return createBatimentDefenceAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +124,20 @@ public class BatimentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBatimentProductionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link jeu.batiment.BatimentDefence <em>Defence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see jeu.batiment.BatimentDefence
+	 * @generated
+	 */
+	public Adapter createBatimentDefenceAdapter() {
 		return null;
 	}
 

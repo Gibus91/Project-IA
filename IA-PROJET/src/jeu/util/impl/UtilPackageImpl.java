@@ -21,6 +21,14 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.polytech.model.jeu.model.carte.CartePackage;
+
+import org.polytech.model.jeu.model.carte.impl.CartePackageImpl;
+
+import org.polytech.model.jeu.model.joueur.JoueurPackage;
+
+import org.polytech.model.jeu.model.joueur.impl.JoueurPackageImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -84,16 +92,22 @@ public class UtilPackageImpl extends EPackageImpl implements UtilPackage {
 		// Obtain or create and register interdependencies
 		BatimentPackageImpl theBatimentPackage = (BatimentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BatimentPackage.eNS_URI) instanceof BatimentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BatimentPackage.eNS_URI) : BatimentPackage.eINSTANCE);
 		UnitePackageImpl theUnitePackage = (UnitePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UnitePackage.eNS_URI) instanceof UnitePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UnitePackage.eNS_URI) : UnitePackage.eINSTANCE);
+		JoueurPackageImpl theJoueurPackage = (JoueurPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(JoueurPackage.eNS_URI) instanceof JoueurPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(JoueurPackage.eNS_URI) : JoueurPackage.eINSTANCE);
+		CartePackageImpl theCartePackage = (CartePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CartePackage.eNS_URI) instanceof CartePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CartePackage.eNS_URI) : CartePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theUtilPackage.createPackageContents();
 		theBatimentPackage.createPackageContents();
 		theUnitePackage.createPackageContents();
+		theJoueurPackage.createPackageContents();
+		theCartePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theUtilPackage.initializePackageContents();
 		theBatimentPackage.initializePackageContents();
 		theUnitePackage.initializePackageContents();
+		theJoueurPackage.initializePackageContents();
+		theCartePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theUtilPackage.freeze();
