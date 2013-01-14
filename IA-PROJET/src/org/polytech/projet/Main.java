@@ -1,4 +1,4 @@
-package org.polytech;
+package org.polytech.projet;
 
 import org.polytech.projet.model.carte.Carte;
 import org.polytech.projet.model.carte.CarteFactory;
