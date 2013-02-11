@@ -1,9 +1,9 @@
 package org.polytech.projet;
 
-import org.polytech.projet.model.carte.Carte;
-import org.polytech.projet.model.carte.CarteFactory;
-import org.polytech.projet.model.unite.Unite;
-import org.polytech.projet.model.unite.UniteFactory;
+import org.polytech.projet.ia.model.carte.Carte;
+import org.polytech.projet.ia.model.carte.CarteFactory;
+import org.polytech.projet.ia.model.unite.Unite;
+import org.polytech.projet.ia.model.unite.UniteFactory;
 
 public class Main {
 
@@ -16,7 +16,7 @@ public class Main {
 		Unite u1 = UniteFactory.eINSTANCE.createUniteCombat();
 		Carte c = CarteFactory.eINSTANCE.createCarte();
 
-		c.addUnit(u1);
+
 		c.generateMap();
 	}
 

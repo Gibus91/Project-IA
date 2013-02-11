@@ -50,6 +50,7 @@ public abstract class UniteCombat extends Unite {
 	public abstract void updateUnit();
 
 	public abstract void updateUnitForce();
+
 	public abstract void updateUnitDefence();
 
 	public abstract String toString();
@@ -77,8 +78,8 @@ public abstract class UniteCombat extends Unite {
 	}
 
 	/**
-	 * Fonction de déplacement des unités de combat, seul unité qui peut se
-	 * déplacer sur la carte.
+	 * Fonction de pathfinding qui permet de connaitre les déplacements
+	 * possibles pour les unités
 	 * 
 	 * @param mouvementX
 	 * @param mouvementY
